@@ -12,8 +12,12 @@ class PostsController < ApplicationController
     end
   end
 
-  get '/logout' do
-    session.clear
+  get '/posts/:id/edit' do
+    if !session[:email].present?
+      redirect "/login"
+    else
+      erb :"/posts/edit"
+    end
   end
 
 end
