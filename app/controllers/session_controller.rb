@@ -5,7 +5,7 @@ class SessionController < ApplicationController
   end
 
   post '/sessions' do
-    login(params[:email])
+    login(params[:email], params[:password])
 
     redirect "/posts"
   end
@@ -14,11 +14,5 @@ class SessionController < ApplicationController
     logout!
 
     redirect "/posts"
-  end
-
-  get '/signup' do
-    @authors = Author.all
-
-    erb :"sessions/signup"
   end
 end
