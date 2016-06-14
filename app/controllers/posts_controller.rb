@@ -50,4 +50,10 @@ class PostsController < ApplicationController
     redirect ("posts/#{@post.id}")
   end
 
+  delete '/posts/:id/delete' do 
+    @post = Post.find_by_id(params[:id])
+    @post.delete
+    redirect to '/posts'
+  end
+
 end

@@ -1,14 +1,16 @@
 class AuthorsController < ApplicationController
 
   get '/signup' do
-
-    erb :"authors/new"
+    if !logged_in?
+      erb :"authors/new"
+    else
+      redirect "/posts"
+    end
   end
 
   post '/authors' do
+    @author = Author.new(params)
 
-    # if !Author.find_by(:email => params[:email]) 
-      @author = Author.new(params)
     if @author.save
       redirect '/login'
     else
