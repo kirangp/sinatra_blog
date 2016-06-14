@@ -16,16 +16,20 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def logged_in?
-      !!session[:email]
+      !!current_user
     end
 
     def logout!
       session.clear
     end
 
+    def current_user
+      @current_user ||= Author.find_by(:email => session[:email]) if session[:email]
+    end
+
     def login(email, password)
       author = Author.find_by(:email => email)
-      
+
       if author && author.authenticate(password)
         session[:email] = author.email
       else
