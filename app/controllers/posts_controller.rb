@@ -24,14 +24,11 @@ class PostsController < ApplicationController
     if !logged_in?
       redirect "/login"
     else
-      post = Post.find(params[:id])
-
-      if post.author_id == current_user.id
-        "An edit post form #{current_user.id} is editing #{post.id}"
+      if post = current_user.posts.find_by(:id => params[:id])
+        erb :"/posts/edit"
       else
         redirect "/posts"
       end
-      # erb :"/posts/edit"
     end
   end
 
