@@ -15,6 +15,14 @@ class PostsController < ApplicationController
     end
   end
 
+  post '/posts' do
+    post = Post.new(params[:post])
+    post.author = current_user
+    post.save
+
+    redirect ("/posts/#{post.id}")
+  end
+
   get '/posts/:id' do
     @post = Post.find(params[:id])
 
@@ -33,6 +41,13 @@ class PostsController < ApplicationController
         redirect "/posts"
       end
     end
+  end
+
+  patch '/posts/:id' do
+    @post = Post.find(params[:id])
+    @post.update(params[:post])
+
+    redirect ("posts/#{@post.id}")
   end
 
 end

@@ -1,13 +1,20 @@
 <h1> <%= @post.title %> </h1>
-<h3> Written By: <a href="/authors/<%= @post.author.id %>"><%= @post.author.name %></h3>
-<h5><%= @post.content %> </h5>
+<h5> Written By: <a href="/authors/<%= @post.author.id %>"><%= @post.author.name %></a></h5>
+<p>
+<label><%= @post.content %> </label>
+</p>
+<% @post.tags.collect do |tag| %>
+  <label><a href="/tags/<%= tag.id %>"><%= tag.name %></a></label>
+<% end %> 
 
-<h6><%= @post.tags.collect(&:name).join(", ") %></h6>
-
+<br> 
+<br> 
 
 <form action="/posts/<%= @post.id %>/edit">
   <input type="submit" value="Edit">
 </form>
+
+<br>
 
 <form action="/posts/<%= @post.id %>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
