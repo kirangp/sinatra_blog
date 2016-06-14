@@ -1,0 +1,14 @@
+<h1>Posts with: <%= @tag.name %></h1>
+
+<% if @tag.posts.present? %>
+  <% @tag.posts.each do |post| %>
+    <li>
+      <ul>
+        <p>
+          <h5><a href="/posts/<%= post.id %>"><%=post.title%></h5>  
+        </p>
+        <label>Written by: <h6></label><a href="/authors/<%= post.author.id %>"><%= post.author.name %></h6>  
+      </ul> 
+    </li>
+   <% end %>   
+<% end %>  

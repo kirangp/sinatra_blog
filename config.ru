@@ -8,4 +8,5 @@ use Rack::MethodOverride
 use SessionController
 use PostsController
 use AuthorsController
+use TagsController
 run ApplicationController

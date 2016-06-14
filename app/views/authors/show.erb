@@ -4,9 +4,13 @@
   <li>
     <ul>
       <p>
-        <a href="/posts/<%= post.id %>"><%=post.title%>
+        <h5><a href="/posts/<%= post.id %>"><%=post.title%></h5>  
       </p>
-      <label>Tags:</label>
+      <% if post.tags.present? %>
+          <% post.tags.collect do |tag| %>
+            <label>Tags: </label><a href="/tags/<%= tag.id %>"><%= tag.name %>
+          <% end %>  
+      <% end %>  
     </ul> 
   </li>
- <% end %>       
+ <% end %>   
