@@ -6,10 +6,10 @@ class AuthorsController < ApplicationController
   end
 
   post '/authors' do
-    
-    if !Author.find_by(:email => params[:email]) 
+
+    # if !Author.find_by(:email => params[:email]) 
       @author = Author.new(params)
-      @author.save
+    if @author.save
       redirect '/login'
     else
       erb :"/authors/new"
