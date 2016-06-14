@@ -1,5 +1,5 @@
 <h1> <%= @post.title %> </h1>
-<h3> Written By: <%= @post.author.name %></h3>
+<h3> Written By: <a href="/authors/<%= @post.author.id %>"><%= @post.author.name %></h3>
 <h5><%= @post.content %> </h5>
 
 <h6><%= @post.tags.collect(&:name).join(", ") %></h6>

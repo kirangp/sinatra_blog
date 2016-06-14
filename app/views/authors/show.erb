@@ -1,0 +1,12 @@
+<h1>Posts by: <%= @author.name %></h1>
+
+<% @author.posts.each do |post| %>
+  <li>
+    <ul>
+      <p>
+        <a href="/posts/<%= post.id %>"><%=post.title%>
+      </p>
+      <label>Tags:</label>
+    </ul> 
+  </li>
+ <% end %>       
