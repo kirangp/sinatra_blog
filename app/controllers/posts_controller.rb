@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   get '/posts/new' do
+    @tags = Tag.all
     if !logged_in?
       redirect "/login"
     else
@@ -21,6 +22,8 @@ class PostsController < ApplicationController
   end
 
   get '/posts/:id/edit' do
+    @post = Post.find_by(:id => params[:id])
+    @tags = Tag.all
     if !logged_in?
       redirect "/login"
     else
