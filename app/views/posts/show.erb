@@ -5,7 +5,9 @@
 <%end%>  
 
 <p>
-  <label><%=@post.content%></label>
+  <%if @post.content.present?%>
+    <label><%=@post.content%></label>
+  <%end%>   
 </p>
 
 <%if @post.tags.present?%>
