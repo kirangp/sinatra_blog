@@ -1,20 +1,41 @@
 <h1>Create a new User</h1>
 
-<form action="/signup" method="POST">
-  <p>
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name">
-  </p>
+<form action="/signup" method="POST" class="col s4">
 
-  <p>
+ <div class="row"> 
+
+  <div class="input-field col s4">
+    <i class="material-icons prefix">account_circle</i>
+    <input id="icon_prefix" type="text" name="name" class="validate">
+    <label class="active" for="icon_prefix">Name</label>
+  </div>
+
+  <div class="input-field col s4">
+    <i class="material-icons prefix">email</i>
+    <input id="icon_prefix" type="email" name="email" class="validate">
+    <label class="active" for="icon_prefix">Email Address</label>
+  </div>
+
+  <div class="input-field col s4">
+    <i class="material-icons prefix">info</i>
+    <input id="icon_prefix" type="password" name="password" class="validate">
+    <label class="active" for="icon_prefix">password</label>
+  </div>
+
+<br>
+
+<!--   <p>
   <label for="email">Email Address:</label>
   <input type="email" name="email" id="email">
-  </p>
+  </p> -->
 
-  <p>
+<!--   <p>
   <label for="password">Password:</label>
   <input type="password" name="password" id="password">
-  </p>
+  </p> -->
 
-  <input type="submit" value="Create new User">
+ </div> 
+  <!-- <input type="submit" value="Create new User"> -->
+  <button class="btn waves-effect waves-light" type="submit">Create New User
+    <i class="material-icons right"></i>
 </form>
