@@ -3,6 +3,16 @@ class Post < ActiveRecord::Base
   has_many :post_tags
   has_many :tags, :through => :post_tags
 
+  extend Slugifiable::ClassMethods
+
+  def slug
+    self.title.gsub(" ", "-").downcase
+  end
+
+  def self.find_by_slug(slug)
+    self.all.detect { |item| item.slug == slug}
+  end
+
   def author_name=(name)
     self.author = Author.find_or_create_by(:name => name)
   end

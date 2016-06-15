@@ -1,24 +1,30 @@
-<h1> <%= @post.title %> </h1>
-<% if @post.author.present? %>
-  <h5> Written By: <a href="/authors/<%= @post.author.id %>"><%= @post.author.name %></a></h5>
-<% end %>  
+<h1><%= @post.title %></h1>
+
+<%if @post.author.present?%>
+  <h5>Written By: <a href="/authors/<%=@post.author.slug%>"><%=@post.author.name%></a></h5>
+<%end%>  
+
 <p>
-<label><%= @post.content %> </label>
+  <label><%=@post.content%></label>
 </p>
-<% @post.tags.collect do |tag| %>
-  <label><a href="/tags/<%= tag.id %>"><%= tag.name %></a></label>
-<% end %> 
+
+<%if @post.tags.present?%>
+  <%@post.tags.collect do |tag|%>
+    <label><a href="/tags/<%=tag.slug%>"><%=tag.name%></a></label>
+  <%end%> 
+<%end%> 
 
 <br> 
 <br> 
 
-<form action="/posts/<%= @post.id %>/edit">
+<form action="/posts/<%=@post.slug%>/edit">
   <input type="submit" value="Edit">
 </form>
 
 <br>
 
-<form action="/posts/<%= @post.id %>/delete" method="post">
+<form action="/posts/<%=@post.slug%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>
+

@@ -6,9 +6,8 @@ class TagsController < ApplicationController
     "All Tags will be listed here"
   end
 
-  get '/tags/:id' do
-    # binding.pry
-    @tag = Tag.find_by(:id => params[:id])
+  get '/tags/:slug' do
+    @tag = Tag.find_by_slug(params[:slug])
 
     erb :"/tags/show"
   end

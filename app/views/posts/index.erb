@@ -1,11 +1,11 @@
 <h1>Post List</h1>
 
-<% @posts.each do |post| %>
+<%@posts.each do |post|%>
   <li>
     <ul>
       <p>
-        <a href="/posts/<%= post.id %>"><%=post.title%> 
+        <a href="/posts/<%=post.slug%>"><%=post.title%></a>
       </p>
     </ul> 
   </li>
- <% end %> 
+ <%end%> 

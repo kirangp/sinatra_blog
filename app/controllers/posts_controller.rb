@@ -20,22 +20,22 @@ class PostsController < ApplicationController
     post.author = current_user
     post.save
 
-    redirect ("/posts/#{post.id}")
+    redirect ("/posts/#{post.slug}")
   end
 
-  get '/posts/:id' do
-    @post = Post.find(params[:id])
+  get '/posts/:slug' do
+    @post = Post.find_by_slug(params[:slug])
 
     erb :'/posts/show'
   end
 
-  get '/posts/:id/edit' do
-    @post = Post.find_by(:id => params[:id])
+  get '/posts/:slug/edit' do
+    @post = Post.find_by_slug(params[:slug])
     @tags = Tag.all
     if !logged_in?
       redirect "/login"
     else
-      if post = current_user.posts.find_by(:id => params[:id])
+      if post = current_user.posts.find_by_slug(params[:slug])
         erb :"/posts/edit"
       else
         redirect "/posts"
@@ -43,21 +43,20 @@ class PostsController < ApplicationController
     end
   end
 
-  patch '/posts/:id' do
-    @post = Post.find(params[:id])
+  patch '/posts/:slug' do
+    @post = Post.find_by_slug(params[:slug])
     @post.update(params[:post])
 
-    redirect ("posts/#{@post.id}")
+    redirect ("posts/#{@post.slug}")
   end
 
-  delete '/posts/:id/delete' do 
-    @post = Post.find_by_id(params[:id])
-    # @post.delete
-    # redirect to '/posts'
+  delete '/posts/:slug/delete' do
+    @post = Post.find_by_slug(params[:slug])
+
     if !logged_in?
       redirect "/login"
     else
-      if post = current_user.posts.find_by(:id => params[:id])
+      if post = current_user.posts.find_by_slug(params[:slug])
         @post.delete
         redirect to '/posts'
       else
@@ -67,3 +66,4 @@ class PostsController < ApplicationController
   end
 
 end
+
