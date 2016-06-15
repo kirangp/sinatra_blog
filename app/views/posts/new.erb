@@ -18,9 +18,11 @@
     </br>
     <%@tags.each do |tag|%>
       <li>
-        <input type="checkbox" name="post[tag_ids][]" value="<%=tag.id%>"><%=tag.name%> 
+        <input type="checkbox" id="tag" name="post[tag_ids][]" value="<%=tag.id%>"><%=tag.name%> 
+        <label for="tag"></label>
       </li>
     <%end%> 
+
 
     </br>   
     <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
