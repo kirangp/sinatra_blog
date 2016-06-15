@@ -8,7 +8,7 @@ class AuthorsController < ApplicationController
     end
   end
 
-  post '/authors' do
+  post '/signup' do
     @author = Author.new(params)
 
     if @author.save

@@ -52,8 +52,18 @@ class PostsController < ApplicationController
 
   delete '/posts/:id/delete' do 
     @post = Post.find_by_id(params[:id])
-    @post.delete
-    redirect to '/posts'
+    # @post.delete
+    # redirect to '/posts'
+    if !logged_in?
+      redirect "/login"
+    else
+      if post = current_user.posts.find_by(:id => params[:id])
+        @post.delete
+        redirect to '/posts'
+      else
+        redirect "/posts"
+      end
+    end
   end
 
 end

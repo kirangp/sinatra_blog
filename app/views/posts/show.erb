@@ -1,5 +1,7 @@
 <h1> <%= @post.title %> </h1>
-<h5> Written By: <a href="/authors/<%= @post.author.id %>"><%= @post.author.name %></a></h5>
+<% if @post.author.present? %>
+  <h5> Written By: <a href="/authors/<%= @post.author.id %>"><%= @post.author.name %></a></h5>
+<% end %>  
 <p>
 <label><%= @post.content %> </label>
 </p>
