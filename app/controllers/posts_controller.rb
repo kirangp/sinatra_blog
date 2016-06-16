@@ -16,11 +16,14 @@ class PostsController < ApplicationController
   end
 
   post '/posts' do
-    post = Post.new(params[:post])
-    post.author = current_user
-    post.save
-
-    redirect ("/posts/#{post.slug}")
+    @post = Post.new(params[:post])
+    @post.author = current_user
+    if @post.save
+      redirect ("/posts/#{post.slug}")
+    else
+      # binding.pry
+      render :"/posts/new"
+    end
   end
 
   get '/posts/:slug' do

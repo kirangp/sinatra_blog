@@ -14,7 +14,8 @@ class AuthorsController < ApplicationController
     if @author.save
       redirect '/login'
     else
-      erb :"/authors/new"
+      # @author.errors
+      render :"/authors/new"
     end
   end
 
