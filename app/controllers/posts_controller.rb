@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  use Rack::Flash
 
   get '/posts' do
     @posts = Post.all
@@ -9,8 +10,11 @@ class PostsController < ApplicationController
   get '/posts/new' do
     @tags = Tag.all
     if !logged_in?
-      redirect "/login"
+      @author = Author.new
+      flash[:message] = "Please login to create a new post"
+      erb :"/sessions/login"
     else
+      @post = Post.new
       erb :"/posts/new"
     end
   end
@@ -19,10 +23,11 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.author = current_user
     if @post.save
-      redirect ("/posts/#{post.slug}")
+      redirect "/posts/#{@post.slug}"
     else
       # binding.pry
-      render :"/posts/new"
+      @tags = Tag.all
+      erb :"/posts/new"
     end
   end
 
@@ -67,6 +72,5 @@ class PostsController < ApplicationController
       end
     end
   end
-
 end
 

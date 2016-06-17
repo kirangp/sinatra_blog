@@ -1,5 +1,22 @@
 <h1>Create a new Post</h1>
 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
+<div class="section">
+  <div class="intro blue lighten-2 z-depth-1">
+    <%if @post.errors.any?%>
+      <h2>ERROR!</h2>
+        <%@post.errors.full_messages.each do |msg|%>
+      <li>
+          <ul><%=msg%></ul>
+      </li>  
+      <%end%>  
+    <%end%>
+   </div> 
+</div>
 
 <form action="/posts" method="POST">
   <p>

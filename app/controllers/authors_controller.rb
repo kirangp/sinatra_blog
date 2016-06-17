@@ -1,7 +1,10 @@
 class AuthorsController < ApplicationController
+  
 
   get '/signup' do
+
     if !logged_in?
+      @author = Author.new
       erb :"authors/new"
     else
       redirect "/posts"
@@ -14,8 +17,8 @@ class AuthorsController < ApplicationController
     if @author.save
       redirect '/login'
     else
-      # @author.errors
-      render :"/authors/new"
+      @author.errors
+      erb :"/authors/new"
     end
   end
 

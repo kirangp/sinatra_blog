@@ -1,6 +1,27 @@
 <h1>Login</h1>
 
-<form action="/sessions" method="POST">
+<% if !flash.nil? %>
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
+<% end %>
+
+<div class="section">
+  <div class="intro blue lighten-2 z-depth-1">
+    <%if @author.errors.any?%>
+      <h2>ERROR!</h2>
+        <%@author.errors.full_messages.each do |msg|%>
+      <li>
+          <ul><%=msg%></ul>
+      </li>  
+      <%end%>  
+    <%end%>
+   </div> 
+</div>
+
+</div>
+
+<form action="/login" method="POST">
   <p>
     <label for="email">E-Mail Address</label>
     <input type="text" name="email" id="email">
