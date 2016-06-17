@@ -36,8 +36,9 @@
     </br>
     <%@tags.each do |tag|%>
       <li>
-        <input type="checkbox" class="filled-in" id="checktag" name="post[tag_ids][]" value="<%=tag.id%>" />
-        <label for="checktag"><%=tag.name%></label> 
+        <input type="checkbox" id="tag_<%=tag.id%>" name="post[tag_ids][]" 
+        value="<%=tag.id%>" />
+        <label for="tag_<%=tag.id%>"><%=tag.name%></label> 
       </li>
 
     <%end%> 

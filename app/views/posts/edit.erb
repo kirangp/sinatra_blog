@@ -15,7 +15,7 @@
   <ul>
     <%@tags.each do |tag|%>
       <li>
-        <input type="checkbox" name="post[tag_ids][]" value="<%=tag.id%>" <%='checked' if @post.tags.include?(tag)%>><label><%=tag.name%></label>
+        <input type="checkbox" id="tag_<%=tag.id%>" name="post[tag_ids][]" value="<%=tag.id%>" <%='checked' if @post.tags.include?(tag)%>><label for="tag_<%=tag.id%>"><%=tag.name%></label>
       </li>
     <%end%> 
     
