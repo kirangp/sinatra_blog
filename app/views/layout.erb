@@ -21,8 +21,12 @@
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><i class="large material-icons">code</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-        <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+        <li><a href="/posts/new"><i class="material-icons">mode_edit</i></a></li>
+        <%if current_user.present?%>
+          <li><a href="/authors/<%= current_user.slug%>"><i class="material-icons">perm_identity</i></a></li>
+        <%else%>
+          <li><a href="/login"><i class="material-icons">perm_identity</i></a></li>
+        <%end%>  
         <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
         <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
       </ul>
