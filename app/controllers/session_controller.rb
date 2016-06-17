@@ -10,11 +10,13 @@ class SessionController < ApplicationController
   end
 
   post '/login' do
-    if login(params[:email], params[:password])
+    @author = Author.find_by(:email => params[:email])
+
+    if @author && @author.authenticate(params[:password])
+      session[:email] = @author.email
       redirect "/posts"
     else
-      @author.errors
-      erb :"sessions/login"
+      erb :"/sessions/login", locals: {message: "Invalid email or password! Please try again."}
     end
   end
 
