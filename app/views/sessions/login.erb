@@ -1,27 +1,42 @@
-<h1>Login</h1>
+<div class="container">
+  <div class="center align">
+    <h1>Login</h1>
+  </div>  
 
-<%if !flash.nil?%>
-  <%if flash.has?(:message)%>
-    <%=flash[:message]%>
+  <%if !flash.nil?%>
+    <%if flash.has?(:message)%>
+      <%=flash[:message]%>
+    <%end%>
   <%end%>
-<%end%>
 
-<%unless locals.empty?%>
-  <%=message%>
-<%end%>  
+  <%unless locals.empty?%>
+    <%=message%>
+  <%end%>  
 
-</div>
 
-<form action="/login" method="POST">
-  <p>
-    <label for="email">E-Mail Address</label>
-    <input type="text" name="email" id="email">
-  </p>
 
-  <p>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-  </p>
+  <form action="/login" method="POST">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <input id="icon_prefix" type="email" name="email" class="validate" placeholder="Email Address">
+        <label class="active" for="icon_prefix"></label>
+        <label for="email" data-error="wrong" data-success="right"></label>
+      </div>
+    </div>
 
-  <input type="submit" value="Submit"> 
-</form>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">info</i>
+        <input id="icon_prefix" type="password" name="password" class="validate" placeholder="Password">
+        <label class="active" for="icon_prefix"></label>
+      </div>
+    </div>
+    <br>
+    
+    <div class="center align">
+      <button class="btn waves-effect waves-light" type="submit">Login
+        <i class="material-icons right"></i></button>
+    </div>
+  </form>
+</div>  

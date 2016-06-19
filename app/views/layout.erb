@@ -19,7 +19,7 @@
 <body>
     <nav>
     <div class="nav-wrapper brown lighten-2">
-      <a href="#!" class="brand-logo"><i class="large material-icons">code</i></a>
+      <a href="/posts" class="brand-logo"><i class="large material-icons">code</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/posts/new"><i class="material-icons">mode_edit</i></a></li>
         <%if current_user.present?%>
@@ -27,8 +27,8 @@
         <%else%>
           <li><a href="/login"><i class="material-icons">perm_identity</i></a></li>
         <%end%>  
-        <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-        <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+        <li><a href="/logout"><i class="material-icons">clear_all</i></a></li>
+        <!-- <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li> -->
       </ul>
     </div>
   </nav>
@@ -36,9 +36,9 @@
 
       <%= yield %>
 
-    <footer class="branding">
+<!--     <footer class="branding">
       <label><small>&copy; 2016 <strong>Sinatra Blog</strong></small></label>
-    </footer>
+    </footer> -->
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>

@@ -1,32 +1,39 @@
-<h1><%= @post.title %></h1>
+<div class="container">
+  
 
-<%if @post.author.present?%>
-  <h5>Written By: <a href="/authors/<%=@post.author.slug%>"><%=@post.author.name%></a></h5>
-<%end%>  
+  <h1><%= @post.title %></h1>
 
-<p>
-  <%if @post.content.present?%>
-    <label><%=@post.content%></label>
-  <%end%>   
-</p>
+  <%if @post.author.present?%>
+    <h5>Written By: <a href="/authors/<%=@post.author.slug%>"><%=@post.author.name%></a></h5>
+  <%end%>  
 
-<%if @post.tags.present?%>
-  <%@post.tags.collect do |tag|%>
-    <label><a href="/tags/<%=tag.slug%>"><%=tag.name%></a></label>
+  <p>
+    <%if @post.content.present?%>
+      <label><%=@post.content%></label>
+    <%end%>   
+  </p>
+
+  <%if @post.tags.present?%>
+    <%@post.tags.collect do |tag|%>
+      <div class="chip">
+        <a href="/tags/<%=tag.slug%>"><%=tag.name%></a>
+        <i class="material-icons">close</i>
+      </div>  
+    <%end%> 
   <%end%> 
-<%end%> 
 
-<br> 
-<br> 
+  <br> 
+  <br> 
 
-<form action="/posts/<%=@post.slug%>/edit">
-  <input type="submit" value="Edit">
-</form>
+  <form action="/posts/<%=@post.slug%>/edit">
+    <input type="submit" value="Edit">
+  </form>
 
-<br>
+  <br>
 
-<form action="/posts/<%=@post.slug%>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete">
-</form>
+  <form action="/posts/<%=@post.slug%>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
 
+</div>  

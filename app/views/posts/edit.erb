@@ -1,28 +1,30 @@
-<h1>Edit <%=@post.title%></h1>
+<div class="container">
+  <h1>Edit <%=@post.title%></h1>
 
-<form action="/posts/<%=@post.slug%>" method="post">
-  <input type="hidden" name="_method" value="PATCH">
-  <p>
-    <label>Update Post Title</label>
-    <input type="text" name="post[title]" value="<%=@post.title%>"/>
-  </p>
+  <form action="/posts/<%=@post.slug%>" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <p>
+      <label>Update Post Title</label>
+      <input type="text" name="post[title]" value="<%=@post.title%>"/>
+    </p>
 
-  <p>
-    <label>Post Content</label>
-    <TEXTAREA NAME="post[content]" rows="10" cols="100"><%=@post.content%></TEXTAREA>
-  </p>
+    <p>
+      <label>Post Content</label>
+      <TEXTAREA NAME="post[content]" rows="10" cols="100"><%=@post.content%></TEXTAREA>
+    </p>
 
-  <ul>
-    <%@tags.each do |tag|%>
-      <li>
-        <input type="checkbox" id="tag_<%=tag.id%>" name="post[tag_ids][]" value="<%=tag.id%>" <%='checked' if @post.tags.include?(tag)%>><label for="tag_<%=tag.id%>"><%=tag.name%></label>
-      </li>
-    <%end%> 
-    
+    <ul>
+      <%@tags.each do |tag|%>
+        <li>
+          <input type="checkbox" id="tag_<%=tag.id%>" name="post[tag_ids][]" value="<%=tag.id%>" <%='checked' if @post.tags.include?(tag)%>><label for="tag_<%=tag.id%>"><%=tag.name%></label>
+        </li>
+      <%end%> 
+      
+      </br>
+      <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
+    </ul>
+
     </br>
-    <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
-  </ul>
-
-  </br>
-  <input type="submit" value="Update" id="submit" />
-</form>
+    <input type="submit" value="Update" id="submit" />
+  </form>
+</div>

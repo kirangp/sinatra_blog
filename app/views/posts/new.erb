@@ -1,55 +1,57 @@
-<h1>Create a new Post</h1>
+<div class="container">
+  <h1>Create a new Post</h1>
 
-<% if flash.has?(:message) %>
-  <%= flash[:message] %>
-<% end %>
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
 
 
-<div class="section">
-  <div class="intro blue lighten-2 z-depth-1">
-    <%if @post.errors.any?%>
-      <h2>ERROR!</h2>
-        <%@post.errors.full_messages.each do |msg|%>
-      <li>
-          <ul><%=msg%></ul>
-      </li>  
-      <%end%>  
-    <%end%>
-   </div> 
+  <div class="section">
+    <div class="intro blue lighten-2 z-depth-1">
+      <%if @post.errors.any?%>
+        <h2>ERROR!</h2>
+          <%@post.errors.full_messages.each do |msg|%>
+        <li>
+            <ul><%=msg%></ul>
+        </li>  
+        <%end%>  
+      <%end%>
+     </div> 
+  </div>
+
+  <form action="/posts" method="POST">
+    <p>
+      <label>Post Title</label>
+      <input type="text" name="post[title]"/>
+    </p>
+
+    <p>
+      <label>Post Content</label>
+      <TEXTAREA NAME="post[content]" rows="10" cols="100"></TEXTAREA>
+    </p>
+
+    </br>
+    <ul>
+      <label>Tags:</label>
+      </br>
+      </br>
+      <%@tags.each do |tag|%>
+        <li>
+          <input type="checkbox" id="tag_<%=tag.id%>" name="post[tag_ids][]" 
+          value="<%=tag.id%>" />
+          <label for="tag_<%=tag.id%>"><%=tag.name%></label> 
+        </li>
+
+      <%end%> 
+
+
+      </br>   
+      <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
+    </ul>
+
+    </br>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right"></i>
+    </button>
+  </form>
 </div>
-
-<form action="/posts" method="POST">
-  <p>
-    <label>Post Title</label>
-    <input type="text" name="post[title]"/>
-  </p>
-
-  <p>
-    <label>Post Content</label>
-    <TEXTAREA NAME="post[content]" rows="10" cols="100"></TEXTAREA>
-  </p>
-
-  </br>
-  <ul>
-    <label>Tags:</label>
-    </br>
-    </br>
-    <%@tags.each do |tag|%>
-      <li>
-        <input type="checkbox" id="tag_<%=tag.id%>" name="post[tag_ids][]" 
-        value="<%=tag.id%>" />
-        <label for="tag_<%=tag.id%>"><%=tag.name%></label> 
-      </li>
-
-    <%end%> 
-
-
-    </br>   
-    <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
-  </ul>
-
-  </br>
-  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-    <i class="material-icons right"></i>
-  </button>
-</form>
