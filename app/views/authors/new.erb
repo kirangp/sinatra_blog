@@ -8,23 +8,23 @@
   <div class="intro blue lighten-2 z-depth-1">
     <%if @author.errors.any?%>
       <h2>ERROR!</h2>
-        <%@author.errors.full_messages.each do |msg|%>
+        <%@author.errors.full_messages.uniq.each do |msg|%>
       <li>
           <ul><%=msg%></ul>
       </li>  
-      <%end%>  
+      <%end%>
     <%end%>
    </div> 
 </div>
 
 
-<form action="/signup" method="POST" class="col s4">
+<form action="/signup" method="POST" class="col s12">
 
   <div class="row"> 
-    <div class="input-field col l4 m6 s12">
+    <div class="input-field col l4 m6 s12 ">
       <i class="material-icons prefix">account_circle</i>
-      <input id="icon_prefix" type="text" name="name" class="validate">
-      <label class="active" for="icon_prefix">Name</label>
+      <input id="icon_prefix" type="text" name="name" class="validate" placeholder="Name">
+      <label class="active" for="icon_prefix"></label>
     </div>
   </div>
 
@@ -32,8 +32,8 @@
   <div class="row">
     <div class="input-field col l4 m6 s12">
       <i class="material-icons prefix">email</i>
-      <input id="icon_prefix" type="email" name="email" class="validate">
-      <label class="active" for="icon_prefix">Email Address</label>
+      <input id="icon_prefix" type="email" name="email" class="validate" placeholder="Email Address">
+      <label class="active" for="icon_prefix"></label>
       <label for="email" data-error="wrong" data-success="right"></label>
     </div>
   </div>
@@ -41,8 +41,8 @@
   <div class="row">
     <div class="input-field col l4 m6 s12">
       <i class="material-icons prefix">info</i>
-      <input id="icon_prefix" type="password" name="password" class="validate">
-      <label class="active" for="icon_prefix">password</label>
+      <input id="icon_prefix" type="password" name="password" class="validate" placeholder="Password">
+      <label class="active" for="icon_prefix"></label>
     </div>
   </div>
   <br>
@@ -50,3 +50,4 @@
   <button class="btn waves-effect waves-light" type="submit">Create New User
     <i class="material-icons right"></i>
 </form>
+

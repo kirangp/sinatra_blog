@@ -17,7 +17,6 @@ class AuthorsController < ApplicationController
     if @author.save
       redirect '/login'
     else
-      @author = Author.new
       erb :"/authors/new"
     end
   end
@@ -28,5 +27,9 @@ class AuthorsController < ApplicationController
     erb :"/authors/show"
   end
 
+  get '/authors' do
+    @authors = Author.all
 
+    erb :"/authors/index"
+  end
 end

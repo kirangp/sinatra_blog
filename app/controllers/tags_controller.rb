@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   get '/tags' do
     @tags = Tag.all
 
-    "All Tags will be listed here"
+    erb :"/tags/index"
   end
 
   get '/tags/:slug' do

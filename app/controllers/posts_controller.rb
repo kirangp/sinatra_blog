@@ -25,7 +25,6 @@ class PostsController < ApplicationController
     if @post.save
       redirect "/posts/#{@post.slug}"
     else
-      # binding.pry
       @tags = Tag.all
       erb :"/posts/new"
     end
