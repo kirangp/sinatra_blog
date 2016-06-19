@@ -10,13 +10,13 @@
     <div class="intro blue lighten-2 z-depth-1">
       <%if @post.errors.any?%>
         <h2>ERROR!</h2>
-          <%@post.errors.full_messages.each do |msg|%>
-        <li>
+        <%@post.errors.full_messages.each do |msg|%>
+          <li>
             <ul><%=msg%></ul>
-        </li>  
+          </li>  
         <%end%>  
       <%end%>
-     </div> 
+    </div> 
   </div>
 
   <form action="/posts" method="POST">
@@ -26,32 +26,36 @@
     </p>
 
     <p>
-      <label>Post Content</label>
-      <TEXTAREA NAME="post[content]" rows="10" cols="100"></TEXTAREA>
+      <label for="textarea">Content</label>
+      <TEXTAREA NAME="post[content]" id="textarea" class="materialize-textarea"></TEXTAREA>
     </p>
 
     </br>
+
     <ul>
       <label>Tags:</label>
+
       </br>
       </br>
+
       <%@tags.each do |tag|%>
         <li>
           <input type="checkbox" id="tag_<%=tag.id%>" name="post[tag_ids][]" 
           value="<%=tag.id%>" />
           <label for="tag_<%=tag.id%>"><%=tag.name%></label> 
         </li>
-
       <%end%> 
 
+      </br> 
 
-      </br>   
       <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
     </ul>
 
     </br>
+
     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
       <i class="material-icons right"></i>
     </button>
+    
   </form>
 </div>

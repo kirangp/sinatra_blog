@@ -1,12 +1,12 @@
 <div class="container">
-  <h1>Post List</h1>
+  <h1>Posts List</h1>
 
   <%@posts.each do |post|%>
     <li>
       <ul>
         <p>
           <div class="collection">
-            <a href="/posts/<%=post.slug%>" class="collection-item"><%=post.title%></a>
+            <a href="/posts/<%=post.slug%>" class="collection-item orange lighten-5"><%=post.title%></a>
           </div>  
         </p>
       </ul> 

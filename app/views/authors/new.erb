@@ -9,10 +9,10 @@
     <div class="intro blue lighten-2 z-depth-1">
       <%if @author.errors.any?%>
         <h2>ERROR!</h2>
-          <%@author.errors.full_messages.uniq.each do |msg|%>
-        <li>
+        <%@author.errors.full_messages.uniq.each do |msg|%>
+          <li>
             <ul><%=msg%></ul>
-        </li>  
+          </li>  
         <%end%>
       <%end%>
      </div> 
@@ -46,11 +46,12 @@
         <label class="active" for="icon_prefix"></label>
       </div>
     </div>
+    
     <br>
     
-    <div class="center align">
+    <div class="center al">
       <button class="btn waves-effect waves-light" type="submit">Create New User
         <i class="material-icons right"></i></button>
     </div>    
   </form>
-<!-- </div> -->
+</div>

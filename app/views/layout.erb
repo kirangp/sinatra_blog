@@ -17,22 +17,22 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+  <div class="navbar-fixed">
     <nav>
-    <div class="nav-wrapper brown lighten-2">
-      <a href="/posts" class="brand-logo"><i class="large material-icons">code</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="/posts/new"><i class="material-icons">mode_edit</i></a></li>
-        <%if current_user.present?%>
-          <li><a href="/authors/<%= current_user.slug%>"><i class="material-icons">perm_identity</i></a></li>
-        <%else%>
-          <li><a href="/login"><i class="material-icons">perm_identity</i></a></li>
-        <%end%>  
-        <li><a href="/logout"><i class="material-icons">clear_all</i></a></li>
-        <!-- <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li> -->
-      </ul>
-    </div>
-  </nav>
-  <div class="wrapper">
+      <div class="nav-wrapper brown lighten-2">
+        <a href="/signup" class="brand-logo"><i class="large material-icons">code</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/posts/new"><i class="material-icons">mode_edit</i></a></li>
+          <%if current_user.present?%>
+            <li><a href="/authors/<%= current_user.slug%>"><i class="material-icons">perm_identity</i></a></li>
+          <%else%>
+            <li><a href="/login"><i class="material-icons">perm_identity</i></a></li>
+          <%end%>  
+          <li><a href="/logout"><i class="material-icons">clear_all</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 
       <%= yield %>
 
@@ -42,8 +42,5 @@
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <!--[if lt IE 7]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-  <![endif]-->
+
 </body>

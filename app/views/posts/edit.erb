@@ -9,8 +9,8 @@
     </p>
 
     <p>
-      <label>Post Content</label>
-      <TEXTAREA NAME="post[content]" rows="10" cols="100"><%=@post.content%></TEXTAREA>
+      <label for="textarea">Post Content</label>
+      <TEXTAREA NAME="post[content]" id="textarea" class="materialize-textarea"><%=@post.content%></TEXTAREA>
     </p>
 
     <ul>
@@ -21,10 +21,13 @@
       <%end%> 
       
       </br>
+
       <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
+      
     </ul>
 
     </br>
-    <input type="submit" value="Update" id="submit" />
+    <button class="btn waves-effect waves-light" type="submit">Update
+        <i class="material-icons right"></i></button>
   </form>
 </div>
