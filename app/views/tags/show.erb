@@ -1,19 +1,25 @@
 <div class="container">
-  <h1>Posts with: <%=@tag.name%></h1>
+  <%if @tag.present?%>
+    <h1>Posts with: <%=@tag.name%></h1>
 
-  <%if @tag.posts.present?%>
-    <%@tag.posts.each do |post|%>
-      <li>
-        <ul>
-          <p>
-            <h5><a href="/posts/<%=post.slug%>"><%=post.title%></a></h5>  
-          </p>
-          <%if post.author.present?%>
-            <label>Written by: </label>
-            <a href="/authors/<%=post.author.slug%>"><%=post.author.name%></a> 
-          <%end%>  
-        </ul> 
-      </li>
-     <%end%>   
-  <%end%>  
+    <%if @tag.posts.present?%>
+      <%@tag.posts.each do |post|%>
+        <li>
+          <ul>
+            <p>
+              <h5><a href="/posts/<%=post.slug%>"><%=post.title%></a></h5>  
+            </p>
+            <%if post.author.present?%>
+              <label>Written by: </label>
+              <a href="/authors/<%=post.author.slug%>"><%=post.author.name%></a> 
+            <%end%>  
+          </ul> 
+        </li>
+       <%end%>   
+    <%end%>  
+  <%else%>
+    <div class="center-align">
+      <img src="/images/404.png" alt="404">  
+    </div>
+  <%end%>   
 </div>

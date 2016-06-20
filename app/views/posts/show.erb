@@ -1,41 +1,46 @@
 <div class="container" >
-  <h1><%= @post.title %></h1>
+  <%if @post.present?%>
+    <h1><%= @post.title %></h1>
 
-  <%if @post.author.present?%>
-    <h5>Written By: <a href="/authors/<%=@post.author.slug%>"><%=@post.author.name%></a></h5>
-  <%end%>  
+    <%if @post.author.present?%>
+      <h5>Written By: <a href="/authors/<%=@post.author.slug%>"><%=@post.author.name%></a></h5>
+    <%end%>  
 
-  <p>
-    <%if @post.content.present?%>
-      <label><%=@post.content%></label>
-    <%end%>   
-  </p>
+    <p>
+      <%if @post.content.present?%>
+        <label><%=@post.content%></label>
+      <%end%>   
+    </p>
 
-  <%if @post.tags.present?%>
-    <%@post.tags.collect do |tag|%>
-      <div class="chip">
-        <a href="/tags/<%=tag.slug%>"><%=tag.name%></a>
-        <i class="material-icons">close</i>
-      </div>  
+    <%if @post.tags.present?%>
+      <%@post.tags.collect do |tag|%>
+        <div class="chip">
+          <a href="/tags/<%=tag.slug%>"><%=tag.name%></a>
+          <i class="material-icons">close</i>
+        </div>  
+      <%end%> 
     <%end%> 
-  <%end%> 
 
-  <br> 
-  <br> 
+    <br> 
+    <br> 
 
-  <form action="/posts/<%=@post.slug%>/edit">
-    <button class="btn waves-effect waves-light" type="submit" name="action">Edit
-      <i class="material-icons right"></i>
-    </button>
-  </form>
+    <form action="/posts/<%=@post.slug%>/edit">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+        <i class="material-icons right"></i>
+      </button>
+    </form>
 
-  <br>
+    <br>
 
-  <form action="/posts/<%=@post.slug%>/delete" method="post">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <button class="btn waves-effect waves-light" type="submit" name="action">Delete
-      <i class="material-icons right"></i>
-    </button>
-  </form>
-
+    <form action="/posts/<%=@post.slug%>/delete" method="post">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Delete
+        <i class="material-icons right"></i>
+      </button>
+    </form>
+  <%else%>
+    <div class="center-align">
+      <img src="/images/404.png" alt="404">  
+    </div>
+  <%end%>    
 </div>  
