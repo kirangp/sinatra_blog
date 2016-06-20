@@ -53,6 +53,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack (1.6.4)
     rack-flash3 (1.0.5)
       rack
@@ -125,6 +127,7 @@ DEPENDENCIES
   capybara
   database_cleaner!
   pry
+  pry-rails
   rack-flash3
   rack-test
   rake
