@@ -15,7 +15,8 @@ class AuthorsController < ApplicationController
     @author = Author.new(params)
 
     if @author.save
-      redirect '/login'
+      @session[:id] = @author.id
+      redirect '/posts'
     else
       erb :"/authors/new"
     end
